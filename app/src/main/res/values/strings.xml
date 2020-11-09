@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">CPS731Project</string>
+    <string name="settings_title">Settings</string>
+    <string name="themeSelect">Select App Theme:</string>
+    <string name="lightTheme">Light Theme</string>
+    <string name="darkTheme">Dark Theme</string>
+    <string name="soundSelect">Sound On/Off:</string>
 </resources>
