@@ -1,6 +1,7 @@
 package com.example.cps731project;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -37,10 +38,12 @@ public class SettingsPage extends AppCompatActivity {
                 if(i == R.id.selectLightTheme)
                 {
                     userSettingsEditor.putString("userTheme", "light");
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
                 }
                 else if(i == R.id.selectDarkTheme)
                 {
                     userSettingsEditor.putString("userTheme","dark");
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
                 }
                 userSettingsEditor.apply();
             }
