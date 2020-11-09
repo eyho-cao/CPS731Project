@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -30,14 +31,16 @@
             android:id="@+id/selectLightTheme"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:checked="true"
+            android:checked="false"
+            android:text="@string/lightTheme"
             tools:text="@string/lightTheme" />
 
         <RadioButton
             android:id="@+id/selectDarkTheme"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/darkTheme" />
+            android:text="@string/darkTheme"
+            tools:text="@string/darkTheme" />
 
     </RadioGroup>
 
@@ -46,6 +49,7 @@
         android:layout_width="158dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="30sp"
-        android:checked="true"
-        android:text="@string/soundSelect" />
+        android:checked="false"
+        android:text="@string/soundSelect"
+        tools:ignore="UseSwitchCompatOrMaterialXml" />
 </LinearLayout>
