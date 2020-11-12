@@ -5,4 +5,12 @@
     <string name="lightTheme">Light Theme</string>
     <string name="darkTheme">Dark Theme</string>
     <string name="soundSelect">Sound On/Off</string>
+    <string name="loginTitle">Find Me The Food:\nLogin</string>
+    <string name="loginName">Username:</string>
+    <string name="loginPass">Password:</string>
+    <string name="namePrompt">Enter Username</string>
+    <string name="passPrompt">Enter Password</string>
+    <string name="loginBtn">Login</string>
+    <string name="registerTxt">Don\'t have an account? Click here</string>
+    <string name="registerTxtUL"><u>Don\'t have an account? Click here</u></string>
 </resources>

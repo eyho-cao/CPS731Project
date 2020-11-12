@@ -44,14 +44,13 @@ public class MainActivity extends AppCompatActivity {
                 launchLoginPage();
             }
         };
-        timer.schedule(task, 5000);
+        timer.schedule(task, 1000);
     }
 
     private void launchLoginPage()
     {
-        Intent intent = new Intent(this, SettingsPage.class);
+        Intent intent = new Intent(this, LoginPage.class);
         intent.putExtra("userTheme", userTheme);
-        intent.putExtra("userAudio", userAudio);
         startActivity(intent);
     }
 }
