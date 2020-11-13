@@ -13,4 +13,6 @@
     <string name="loginBtn">Login</string>
     <string name="registerTxt">Don\'t have an account? Click here</string>
     <string name="registerTxtUL"><u>Don\'t have an account? Click here</u></string>
+    <string name="registerTitle">Find Me The Food:\nRegistration</string>
+    <string name="registerBtn">Register Account</string>
 </resources>

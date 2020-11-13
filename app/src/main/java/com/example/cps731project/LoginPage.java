@@ -43,7 +43,7 @@ public class LoginPage extends AppCompatActivity {
         setContentView(R.layout.login_page);
 
         registerTxt = findViewById(R.id.RegisterTxtV);
-        loginBtn = findViewById(R.id.loginBtn);
+        loginBtn = findViewById(R.id.RegisterBtn);
         loginResult = findViewById(R.id.loginResult);
         if(getIntent().hasExtra("userTheme")){
             Log.d(TAG, "getIncomingIntent: found intent extras.");
@@ -82,7 +82,8 @@ public class LoginPage extends AppCompatActivity {
     }
     void OpenRegisterPage()
     {
-
+        Intent intent = new Intent(this, RegisterPage.class);
+        startActivity(intent);
     }
     void OpenMainPage()
     {
