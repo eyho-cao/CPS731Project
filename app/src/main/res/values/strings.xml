@@ -15,4 +15,32 @@
     <string name="registerTxtUL"><u>Don\'t have an account? Click here</u></string>
     <string name="registerTitle">Find Me The Food:\nRegistration</string>
     <string name="registerBtn">Register Account</string>
+    <string name="mainTitle">Find Me The Food:\nMain Page</string>
+    <string name="findRestaurants">Find Restaurants</string>
+    <string name="settingsPage">Settings</string>
+    <string name="findRestaurantsTitle">Find Me The Food:\nCriteria</string>
+    <string name="setLocation">Set Location</string>
+    <string name="stars">Enter Min. Number of Stars:</string>
+    <string name="restaurantType">Restaurant Type:</string>
+    <string name="priceRange">Price Range:</string>
+    <string name="open">Open Now:</string>
+    <string-array name="numStars">
+        <item>N/A</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
+    <string-array name="restaurantType">
+        <item>N/A</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="priceRange">
+        <item>0</item>
+        <item>$</item>
+        <item>$$</item>
+        <item>$$$</item>
+        <item>$$$$</item>
+    </string-array>
 </resources>
