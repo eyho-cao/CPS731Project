@@ -16,7 +16,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SettingsPage" android:parentActivityName=".MainActivity"/>
+        <activity android:name=".LoginPage" android:parentActivityName=".MainActivity"/>
+        <activity android:name=".RegisterPage" android:parentActivityName=".LoginPage"/>
+        <activity android:name=".MainPage" android:parentActivityName=".LoginPage"/>
+        <activity android:name=".SettingsPage" android:parentActivityName=".MainPage"/>
+        <activity android:name=".FindRestaurantsPage" android:parentActivityName=".MainPage"/>
+        <activity android:name=".RestaurantsListPage" android:parentActivityName=".FindRestaurantsPage"/>
     </application>
 
 </manifest>

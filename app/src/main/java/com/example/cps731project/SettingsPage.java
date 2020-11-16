@@ -75,7 +75,6 @@ public class SettingsPage extends AppCompatActivity {
         else
         {
             audioSelect.setChecked(false);
-
         }
     }
 
