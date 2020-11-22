@@ -34,7 +34,12 @@
     </string-array>
     <string-array name="restaurantType">
         <item>N/A</item>
-        <item>1</item>
+        <item>Chinese</item>
+        <item>Mexican</item>
+        <item>Vietnamese</item>
+        <item>Korean</item>
+        <item>German</item>
+        <item>Indian</item>
     </string-array>
     <string-array name="priceRange">
         <item>0</item>
