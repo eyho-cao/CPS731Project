@@ -57,12 +57,14 @@ public class SettingsPage extends AppCompatActivity {
                 userSettingsEditor.apply();
             }
         });
-        if(userTheme == "light")
+        if(userTheme.equals("light"))
         {
             lightThemeBtn.setChecked(true);
+            darkThemeBtn.setChecked(false);
         }
-        else
+        else if(userTheme.equals("dark"))
         {
+            lightThemeBtn.setChecked(false);
             darkThemeBtn.setChecked(true);
         }
         if(userAudio)

@@ -24,6 +24,8 @@
     <string name="restaurantType">Restaurant Type:</string>
     <string name="priceRange">Price Range:</string>
     <string name="open">Open Now:</string>
+    <string name="listRestauranatsTitle">Find Me The Food:\nResults</string>
+    <string name="random">Select Random Restaurant</string>
     <string-array name="numStars">
         <item>N/A</item>
         <item>1</item>
@@ -34,7 +36,12 @@
     </string-array>
     <string-array name="restaurantType">
         <item>N/A</item>
-        <item>1</item>
+        <item>Chinese</item>
+        <item>Mexican</item>
+        <item>Vietnamese</item>
+        <item>Korean</item>
+        <item>German</item>
+        <item>Indian</item>
     </string-array>
     <string-array name="priceRange">
         <item>0</item>
