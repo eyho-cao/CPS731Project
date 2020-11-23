@@ -177,7 +177,7 @@ public class FindRestaurantsPage extends AppCompatActivity{
     {
 
         String url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+latitude +", " +longitude +"&radius=2000&type=restaurant";
-        //String url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=43.65822542336006, -79.38159876389952&radius=2000&type=restaurant";
+        //String url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=43.65822542336006, -79.38159876389952&radius=2000&type=restaurant"; //Younge-Dundas Square
         String restaurantType = type.getSelectedItem().toString();
         if(!restaurantType.equals("N/A"))
         {
@@ -188,7 +188,7 @@ public class FindRestaurantsPage extends AppCompatActivity{
         Boolean openNow = open.isChecked();
         if(openNow)
         {
-            url+="&opennow";
+            url+="&opennow=true";
         }
         url+="&key="+bundle.getString("com.google.android.geo.API_KEY");
         Log.d("QuerySent", url);
