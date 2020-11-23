@@ -23,6 +23,7 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.libraries.places.api.Places;
 import com.google.android.libraries.places.api.net.PlacesClient;
@@ -47,6 +48,7 @@ public class FindRestaurantsPage extends AppCompatActivity{
     protected LocationManager locationManager;
     protected LocationListener listener;
     protected String latitude, longitude;
+    Context context;
 
     Spinner star;
     Spinner type;
@@ -63,6 +65,7 @@ public class FindRestaurantsPage extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.find_restaurants_page);
+        context = this;
 
         txtV = findViewById(R.id.textView2);
         setLocation = findViewById(R.id.setLocationBtn);
@@ -75,7 +78,6 @@ public class FindRestaurantsPage extends AppCompatActivity{
         listener = new LocationListener() {
             @Override
             public void onLocationChanged(Location location) {
-                txtV.setText("Lat: " +location.getLatitude()+" Long:" + location.getLongitude());
                 latitude = Double.toString(location.getLatitude());
                 longitude = Double.toString(location.getLongitude());
             }
@@ -177,7 +179,7 @@ public class FindRestaurantsPage extends AppCompatActivity{
     {
 
         String url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+latitude +", " +longitude +"&radius=2000&type=restaurant";
-        //String url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=43.65822542336006, -79.38159876389952&radius=2000&type=restaurant";
+        //String url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=43.65822542336006, -79.38159876389952&radius=2000&type=restaurant"; //Younge-Dundas Square
         String restaurantType = type.getSelectedItem().toString();
         if(!restaurantType.equals("N/A"))
         {
@@ -188,7 +190,7 @@ public class FindRestaurantsPage extends AppCompatActivity{
         Boolean openNow = open.isChecked();
         if(openNow)
         {
-            url+="&opennow";
+            url+="&opennow=true";
         }
         url+="&key="+bundle.getString("com.google.android.geo.API_KEY");
         Log.d("QuerySent", url);
@@ -285,6 +287,8 @@ public class FindRestaurantsPage extends AppCompatActivity{
 
     void LaunchRestaurantsList()
     {
+        Toast toast = Toast.makeText(context, "Location: " +latitude +", " +longitude, Toast.LENGTH_SHORT);
+        toast.show();
         Intent intent = new Intent(this, RestaurantsListPage.class);
         intent.putExtra("restaurants", restaurants);
         intent.putExtra("ratings", ratings);

@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
                 launchLoginPage();
             }
         };
-        timer.schedule(task, 1000);
+        timer.schedule(task, 5000);
     }
 
     private void launchLoginPage()

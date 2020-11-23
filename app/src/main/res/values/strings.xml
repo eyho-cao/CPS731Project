@@ -24,7 +24,8 @@
     <string name="restaurantType">Restaurant Type:</string>
     <string name="priceRange">Price Range:</string>
     <string name="open">Open Now:</string>
-    <string name="restaurantsListTitle">Find Me The Food:\nResults</string>
+    <string name="listRestauranatsTitle">Find Me The Food:\nResults</string>
+    <string name="random">Select Random Restaurant</string>
     <string-array name="numStars">
         <item>N/A</item>
         <item>1</item>
