@@ -60,4 +60,5 @@ public class MainActivity extends AppCompatActivity {
     public SharedPreferences getShadPref() {
         return this.getSharedPreferences(sharedPrefsFile, MODE_PRIVATE);
     }
+
 }

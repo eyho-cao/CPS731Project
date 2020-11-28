@@ -2,22 +2,17 @@ package com.example.cps731project;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.Paint;
 import android.os.Bundle;
-import android.text.Html;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -25,7 +20,6 @@ import com.google.firebase.FirebaseApp;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.Map;
@@ -48,7 +42,7 @@ public class LoginPage extends AppCompatActivity {
 
         registerTxt = findViewById(R.id.RegisterTxtV);
         loginBtn = findViewById(R.id.RegisterBtn);
-        loginResult = findViewById(R.id.loginResult);
+        loginResult = findViewById(R.id.registerResult);
         if(getIntent().hasExtra("userTheme")){
             Log.d(TAG, "getIncomingIntent: found intent extras.");
 
@@ -158,4 +152,10 @@ public class LoginPage extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+    }
 }
