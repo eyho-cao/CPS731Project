@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -20,6 +21,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -31,7 +33,7 @@ import java.util.Map;
 public class LoginPage extends AppCompatActivity {
 
     private static final String TAG = "Login Page";
-    FirebaseFirestore loginDB= FirebaseFirestore.getInstance();
+    public FirebaseFirestore loginDB;
     TextView registerTxt;
     TextView loginResult;
     Button loginBtn;
@@ -41,6 +43,8 @@ public class LoginPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_page);
+        FirebaseApp.initializeApp(this);
+        loginDB= FirebaseFirestore.getInstance();
 
         registerTxt = findViewById(R.id.RegisterTxtV);
         loginBtn = findViewById(R.id.RegisterBtn);
@@ -80,6 +84,8 @@ public class LoginPage extends AppCompatActivity {
             }
         });
     }
+
+
     void OpenRegisterPage()
     {
         Intent intent = new Intent(this, RegisterPage.class);
