@@ -25,6 +25,7 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.Task;
 import com.google.android.libraries.places.api.Places;
 import com.google.android.libraries.places.api.net.PlacesClient;
 import com.google.android.material.snackbar.Snackbar;
@@ -41,7 +42,10 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class FindRestaurantsPage extends AppCompatActivity{
 
@@ -60,6 +64,7 @@ public class FindRestaurantsPage extends AppCompatActivity{
     Button setLocation;
     Button findRestaurants;
     Switch open;
+    Boolean locationFound;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -154,6 +159,7 @@ public class FindRestaurantsPage extends AppCompatActivity{
             // permission has been granted
             locationManager.requestLocationUpdates("gps", 5000, 0, listener);
         }
+        locationFound = true;
     }
 
     private void request_permission() {
@@ -175,26 +181,51 @@ public class FindRestaurantsPage extends AppCompatActivity{
         }
     }
 
-    private void FindRestaurants()
+    public void setLongitude(String lng)
     {
+        longitude = lng;
+    }
 
-        String url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+latitude +", " +longitude +"&radius=2000&type=restaurant";
-        //String url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=43.65822542336006, -79.38159876389952&radius=2000&type=restaurant"; //Younge-Dundas Square
-        String restaurantType = type.getSelectedItem().toString();
-        if(!restaurantType.equals("N/A"))
-        {
-            url+="&keyword=" +restaurantType;
+    public void setLatitude(String lat)
+    {
+        latitude = lat;
+    }
+
+    public void FindRestaurants()
+    {
+        if(locationFound) {
+            //String url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+latitude +", " +longitude +"&radius=2000&type=restaurant";
+            String url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=43.65822542336006, -79.38159876389952&radius=2000&type=restaurant"; //Younge-Dundas Square
+            String restaurantType = type.getSelectedItem().toString();
+            restaurants = new ArrayList<>();
+            if (!restaurantType.equals("N/A")) {
+                url += "&keyword=" + restaurantType;
+            }
+            String priceRange = price.getSelectedItem().toString();
+            url += "&minprice=" + priceRange;
+            Boolean openNow = open.isChecked();
+            if (openNow) {
+                url += "&opennow=true";
+            }
+            url += "&key=" + bundle.getString("com.google.android.geo.API_KEY");
+            Log.d("QuerySent", url);
+            new JsonTask().execute(url);
         }
-        String priceRange = price.getSelectedItem().toString();
-        url+="&minprice="+priceRange;
-        Boolean openNow = open.isChecked();
-        if(openNow)
+        else
         {
-            url+="&opennow=true";
+            Toast toast = Toast.makeText(context, "Location has not been set. Please set location first!", Toast.LENGTH_SHORT);
+            toast.show();
         }
-        url+="&key="+bundle.getString("com.google.android.geo.API_KEY");
-        Log.d("QuerySent", url);
+    }
+
+    public void TestFindRestaurants(String url)
+    {
+        //Log.d("TestFindRestaurants Test", "URL: " +url);
         new JsonTask().execute(url);
+    }
+
+    public Object getSystemService() {
+        return getSystemService(LOCATION_SERVICE);
     }
 
     private class JsonTask extends AsyncTask<String, String, String> {
@@ -219,7 +250,7 @@ public class FindRestaurantsPage extends AppCompatActivity{
 
                 while ((line = reader.readLine()) != null) {
                     buffer.append(line+"\n");
-                    Log.d("Response: ", "> " + line);   //here u ll get whole response...... :-)
+                    //Log.d("Response: ", "> " + line);   //here u ll get whole response...... :-)
 
                 }
 
@@ -294,5 +325,20 @@ public class FindRestaurantsPage extends AppCompatActivity{
         intent.putExtra("ratings", ratings);
         intent.putExtra("address", addresses);
         startActivity(intent);
+    }
+
+    String outputRestaurants(ArrayList<String> a)
+    {
+        String out = "[";
+        for(int i = 0; i < a.size(); i++)
+        {
+            if(i > 0)
+            {
+                out += ",";
+            }
+            out+= ""+a.get(i);
+        }
+        out+= "]";
+        return out;
     }
 }
