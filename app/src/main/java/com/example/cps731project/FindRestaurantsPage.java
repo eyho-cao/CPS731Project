@@ -51,7 +51,7 @@ public class FindRestaurantsPage extends AppCompatActivity{
 
     protected LocationManager locationManager;
     protected LocationListener listener;
-    protected String latitude, longitude;
+    protected String latitude ="", longitude = "";
     Context context;
 
     Spinner star;
@@ -64,7 +64,6 @@ public class FindRestaurantsPage extends AppCompatActivity{
     Button setLocation;
     Button findRestaurants;
     Switch open;
-    Boolean locationFound;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -159,7 +158,6 @@ public class FindRestaurantsPage extends AppCompatActivity{
             // permission has been granted
             locationManager.requestLocationUpdates("gps", 5000, 0, listener);
         }
-        locationFound = true;
     }
 
     private void request_permission() {
@@ -193,9 +191,15 @@ public class FindRestaurantsPage extends AppCompatActivity{
 
     public void FindRestaurants()
     {
-        if(locationFound) {
-            //String url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+latitude +", " +longitude +"&radius=2000&type=restaurant";
-            String url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=43.65822542336006, -79.38159876389952&radius=2000&type=restaurant"; //Younge-Dundas Square
+        if(latitude.equals(""))
+        {
+            Toast toast = Toast.makeText(context, "Locaiton has not been set! Please set your location.", Toast.LENGTH_SHORT);
+            toast.show();
+        }
+        else {
+
+            String url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + latitude + ", " + longitude + "&radius=2000&type=restaurant";
+            //String url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=43.65822542336006, -79.38159876389952&radius=2000&type=restaurant"; //Younge-Dundas Square
             String restaurantType = type.getSelectedItem().toString();
             restaurants = new ArrayList<>();
             if (!restaurantType.equals("N/A")) {
@@ -210,11 +214,6 @@ public class FindRestaurantsPage extends AppCompatActivity{
             url += "&key=" + bundle.getString("com.google.android.geo.API_KEY");
             Log.d("QuerySent", url);
             new JsonTask().execute(url);
-        }
-        else
-        {
-            Toast toast = Toast.makeText(context, "Location has not been set. Please set location first!", Toast.LENGTH_SHORT);
-            toast.show();
         }
     }
 
