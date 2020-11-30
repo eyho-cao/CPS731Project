@@ -1,6 +1,5 @@
 package com.example.cps731project;
 
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.location.Location;
 import android.location.LocationListener;
@@ -9,8 +8,6 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.firebase.FirebaseApp;
-import com.google.firebase.firestore.FirebaseFirestore;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -30,7 +27,7 @@ import static org.junit.Assert.*;
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
 @RunWith(JUnit4.class)
-public class UnitTests extends AppCompatActivity{
+public class ExampleUnitTest extends AppCompatActivity{
     FindRestaurantsPage frPage;
     protected LocationManager locationManager;
     protected LocationListener listener;
