@@ -53,7 +53,6 @@ public class MainActivity extends AppCompatActivity {
     private void launchLoginPage()
     {
         Intent intent = new Intent(this, LoginPage.class);
-        intent.putExtra("userTheme", userTheme);
         startActivity(intent);
     }
 

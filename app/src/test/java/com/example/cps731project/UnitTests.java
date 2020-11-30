@@ -30,7 +30,7 @@ import static org.junit.Assert.*;
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
 @RunWith(JUnit4.class)
-public class ExampleUnitTest extends AppCompatActivity{
+public class UnitTests extends AppCompatActivity{
     FindRestaurantsPage frPage;
     protected LocationManager locationManager;
     protected LocationListener listener;
