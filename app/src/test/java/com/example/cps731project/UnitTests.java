@@ -6,33 +6,23 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
 
-/**
- * Example local unit test, which will execute on the development machine (host).
- *
- * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
- */
-@RunWith(JUnit4.class)
-public class ExampleUnitTest extends AppCompatActivity{
+public class UnitTests {
     FindRestaurantsPage frPage;
     protected LocationManager locationManager;
     protected LocationListener listener;
-    String latitude;
-    String longitude;
+    String latitude="";
+    String longitude="";
     MainActivity mainAct;
     boolean userAudio;
     LoginPage lgnPage;
@@ -71,21 +61,6 @@ public class ExampleUnitTest extends AppCompatActivity{
             public void onLocationChanged(Location location) {
                 latitude = Double.toString(location.getLatitude());
                 longitude = Double.toString(location.getLongitude());
-            }
-
-            @Override
-            public void onStatusChanged(String s, int i, Bundle bundle) {
-                //
-            }
-
-            @Override
-            public void onProviderEnabled(String s) {
-                //
-            }
-
-            @Override
-            public void onProviderDisabled(String s) {
-                //
             }
         };
         assertEquals(latitude, frPage.latitude);
@@ -139,6 +114,4 @@ public class ExampleUnitTest extends AppCompatActivity{
         };
         timer.schedule(task, 2000);
     }
-
-
 }
