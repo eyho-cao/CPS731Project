@@ -44,4 +44,10 @@ public class MainPage extends AppCompatActivity {
         Intent intent = new Intent(this, SettingsPage.class);
         startActivity(intent);
     }
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, LoginPage.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+    }
 }

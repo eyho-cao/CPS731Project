@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
@@ -56,5 +57,12 @@ public class RestaurantsListPage extends AppCompatActivity {
         String chosen = restaurants.get(random);
         Toast toast = Toast.makeText(this, "Restaurant Chosen: " +chosen, Toast.LENGTH_SHORT);
         toast.show();
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, FindRestaurantsPage.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
     }
 }

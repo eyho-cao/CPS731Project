@@ -16,13 +16,16 @@ public class MainActivity extends AppCompatActivity {
     private String sharedPrefsFile = "com.example.cps731project";
     String userTheme;
     boolean userAudio;
+    SharedPreferences userSettings;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         Timer timer = new Timer();
-        SharedPreferences userSettings = getSharedPreferences(sharedPrefsFile, MODE_PRIVATE);
+        userSettings = getSharedPreferences(sharedPrefsFile, MODE_PRIVATE);
         userTheme = userSettings.getString("userTheme", "light");
         userAudio = userSettings.getBoolean("userAudio", true);
         TextView view = findViewById(R.id.textview);
@@ -50,7 +53,11 @@ public class MainActivity extends AppCompatActivity {
     private void launchLoginPage()
     {
         Intent intent = new Intent(this, LoginPage.class);
-        intent.putExtra("userTheme", userTheme);
         startActivity(intent);
     }
+
+    public SharedPreferences getShadPref() {
+        return this.getSharedPreferences(sharedPrefsFile, MODE_PRIVATE);
+    }
+
 }

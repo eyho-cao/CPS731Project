@@ -1,20 +1,19 @@
 package com.example.cps731project;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -51,22 +50,29 @@ public class RegisterPage extends AppCompatActivity {
     //Get number of documents to compare to
     void CheckDetails(final String username, final String password)
     {
-        db.collection("userAccounts").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                int count = 0;
-                if (task.isSuccessful()) {
-                    for (DocumentSnapshot document : task.getResult()) {
-                        count++;
-                        Log.d("TAG", "count: " +count);
+        if(!username.equals("") && !password.equals("")) {
+            db.collection("userAccounts").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                    int count = 0;
+                    if (task.isSuccessful()) {
+                        for (DocumentSnapshot document : task.getResult()) {
+                            count++;
+                            Log.d("TAG", "count: " + count);
+                        }
+                        CreateAccount(username, password, count);
+                    } else {
+                        Log.d(TAG, "Error getting documents: ", task.getException());
                     }
-                    CreateAccount(username, password, count);
-                } else {
-                    Log.d(TAG, "Error getting documents: ", task.getException());
-                }
 
-            }
-        });
+                }
+            });
+        }
+        else
+        {
+            Toast toast = Toast.makeText(this, "Username and Password cannot be blank", Toast.LENGTH_SHORT);
+            toast.show();
+        }
     }
 
     //check that username is not taken
@@ -77,8 +83,14 @@ public class RegisterPage extends AppCompatActivity {
         newAccount.put("password", password);
         newAccount.put("username", username);
         accounts.document(Integer.toString(count+1)).set(newAccount);
-        finish();
+        onBackPressed();
     }
 
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, LoginPage.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+    }
 
 }

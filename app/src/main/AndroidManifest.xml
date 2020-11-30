@@ -12,19 +12,20 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyAdgpn9vQLiNCgHd2MpDujMuVXg0mTZ0mY"/>
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+                  android:screenOrientation="sensorPortrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginPage" android:parentActivityName=".MainActivity"/>
-        <activity android:name=".RegisterPage" android:parentActivityName=".LoginPage"/>
-        <activity android:name=".MainPage" android:parentActivityName=".LoginPage"/>
-        <activity android:name=".SettingsPage" android:parentActivityName=".MainPage"/>
-        <activity android:name=".FindRestaurantsPage" android:parentActivityName=".MainPage"/>
-        <activity android:name=".RestaurantsListPage" android:parentActivityName=".FindRestaurantsPage"/>
+        <activity android:name=".LoginPage" android:parentActivityName=".MainActivity" android:screenOrientation="sensorPortrait"/>
+        <activity android:name=".RegisterPage" android:parentActivityName=".LoginPage" android:screenOrientation="sensorPortrait"/>
+        <activity android:name=".MainPage" android:parentActivityName=".LoginPage" android:screenOrientation="sensorPortrait"/>
+        <activity android:name=".SettingsPage" android:parentActivityName=".MainPage" android:screenOrientation="sensorPortrait"/>
+        <activity android:name=".FindRestaurantsPage" android:parentActivityName=".MainPage" android:screenOrientation="sensorPortrait"/>
+        <activity android:name=".RestaurantsListPage" android:parentActivityName=".FindRestaurantsPage" android:screenOrientation="sensorPortrait"/>
     </application>
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
